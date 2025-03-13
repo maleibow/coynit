@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coyn It</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title-container">
+        <div class="coin"></div>
+        <h1 id="main-title">Coyn It</h1>
+        <div class="coin"></div>
+    </div>
+    
+    <div id="top-spender-banner">
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+        <p id="top-spender-banner-message">No top spender yet.</p>
+        <div class="expand-indicator">▼ Click to expand ▼</div>
+    </div>
+    
+    <div class="big-winners-link-container">
+        <a href="winners.html" class="big-winners-link">🏆 BIG WINNERS 🏆</a>
+    </div>
+    
+    <div class="container">
+        <div class="main-content">
+            <div id="message-form">
+                <h2>Post Your Message</h2>
+                <input type="text" id="name" placeholder="Your Name" maxlength="25">
+                <textarea id="message" placeholder="Your Message" maxlength="300"></textarea>
+                <input type="number" id="amount" placeholder="Amount (USD)">
+                <button id="post-button">Post</button>
+            </div>
+
+            <div id="messages">
+                <h2>Messages:</h2>
+                <ul id="message-list"></ul>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div id="leaderboard">
+                <h2>Top Spender:</h2>
+                <p id="top-spender-message">No top spender yet.</p>
+                
+                <div class="leaderboard-tabs">
+                    <button class="tab-button active" data-tab="daily">Daily</button>
+                    <button class="tab-button" data-tab="weekly">Weekly</button>
+                    <button class="tab-button" data-tab="monthly">Monthly</button>
+                </div>
+                
+                <div class="tab-content" id="daily-tab">
+                    <h3>Daily Top 5 Spenders:</h3>
+                    <ul id="daily-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="weekly-tab" style="display: none;">
+                    <h3>Weekly Top 5 Spenders:</h3>
+                    <ul id="weekly-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="monthly-tab" style="display: none;">
+                    <h3>Monthly Top 10 Spenders:</h3>
+                    <ul id="monthly-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preload sounds -->
+    <audio id="celebration-sound" src="celebration.mp3" preload="auto"></audio>
+    <audio id="cha-ching-sound" src="cha-ching.mp3" preload="auto"></audio>
+    
+    <!-- Server status indicator -->
+    <div id="server-status" style="position: fixed; bottom: 10px; right: 10px; padding: 5px 10px; background: rgba(0,0,0,0.7); color: #fff; border-radius: 4px; font-size: 12px;">Checking server...</div>
+
+    <script>
+        // Check server status on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const statusEl = document.getElementById('server-status');
+            
+            // Use the same API URL construction as in script.js
+            const API_URL = window.location.origin;
+                
+            // Try to connect to server
+            fetch(`${API_URL}/health`)
+                .then(response => {
+                    if (response.ok) {
+                        statusEl.textContent = 'Server: Connected ✓';
+                        statusEl.style.background = 'rgba(0,128,0,0.7)';
+                        setTimeout(() => { statusEl.style.opacity = '0'; }, 5000);
+                    } else {
+                        statusEl.textContent = 'Server Error: ' + response.status;
+                        statusEl.style.background = 'rgba(255,0,0,0.7)';
+                    }
+                })
+                .catch(error => {
+                    statusEl.textContent = 'Server Offline ✗';
+                    statusEl.style.background = 'rgba(255,0,0,0.7)';
+                    console.error('Server connection failed:', error);
+                });
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
