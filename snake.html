@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake the Leader - Pay-to-Post</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="snake.css">
+</head>
+<body>
+    <div class="crt-effect"></div>
+    <div class="tv-frame"></div>
+    
+    <div class="snake-container">
+        <h1 class="snake-title">Snake the Leader!</h1>
+        <div id="player-setup" class="player-setup">
+            <input type="text" id="player-name" placeholder="Enter your name" maxlength="25">
+            <button id="start-game" class="game-button">Start Game</button>
+            <a href="index.html" class="back-button">
+                <span class="back-icon">◀</span>
+                <span>Return to Main</span>
+            </a>
+        </div>
+        <div id="game-container" style="display: none;">
+            <div id="leader-info">
+            <p>Current Leader: <span id="leader-name">None</span></p>
+            <p>Score: $<span id="leader-score">0</span></p>
+            <p>Snaked: $<span id="snaked-amount">0</span></p>
+        </div>
+        <canvas id="snake-game"></canvas>
+        <div id="game-stats">
+            <p>Coins collected: <span id="coins-collected">0</span></p>
+        </div>
+        <button id="start-button" class="game-button">Start Game</button>
+        <div id="touch-controls">
+            <button id="up-btn" class="control-btn">▲</button>
+            <div class="horizontal-controls">
+                <button id="left-btn" class="control-btn">◄</button>
+                <button id="right-btn" class="control-btn">►</button>
+            </div>
+            <button id="down-btn" class="control-btn">▼</button>
+        </div>
+        <div id="snake-leaderboard" class="snake-leaderboard">
+            <h2>Top Snakers</h2>
+            <ul id="snake-leaderboard-list"></ul>
+        </div>
+        <a href="index.html" class="back-button">
+            <span class="back-icon">◀</span>
+            <span>Return to Main</span>
+        </a>
+    </div>
+    
+    <script src="snake.js"></script>
+</body>
+</html>

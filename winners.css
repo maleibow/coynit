@@ -1,0 +1,252 @@
+
+.winners-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #0c0c2b;
+    color: #fff;
+}
+
+.winners-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.winners-title {
+    font-size: 4rem;
+    color: #33ff33;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #33ff33;
+    animation: titlePulse 2s infinite;
+}
+
+.winners-subtitle {
+    font-size: 1.5rem;
+    color: #ffcc33;
+    margin-top: 0.5rem;
+    text-shadow: 0 0 5px #ffcc33;
+}
+
+@keyframes titlePulse {
+    0% { text-shadow: 0 0 10px #33ff33; }
+    50% { text-shadow: 0 0 20px #33ff33, 0 0 30px #33ff33; }
+    100% { text-shadow: 0 0 10px #33ff33; }
+}
+
+.podium-scene {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.winner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.trophy {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+.gold { color: #ffcc33; }
+.silver { color: #cccccc; }
+.bronze { color: #cc6633; }
+
+.avatar-container {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    background-color: #3a3a6a;
+    clip-path: polygon(
+        25% 0%,    /* Head top left */
+        75% 0%,    /* Head top right */
+        75% 25%,   /* Head bottom right */
+        87% 25%,   /* Shoulder right */
+        87% 75%,   /* Body right */
+        100% 75%,  /* Arm right */
+        100% 100%, /* Bottom right */
+        0% 100%,   /* Bottom left */
+        0% 75%,    /* Arm left */
+        13% 75%,   /* Body left */
+        13% 25%,   /* Shoulder left */
+        25% 25%    /* Head bottom left */
+    );
+}
+
+.avatar::before {
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    background-color: currentColor;
+    border-radius: 50%;
+    top: 8%;
+    left: 35%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.avatar::after {
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    background-color: currentColor;
+    border-radius: 50%;
+    top: 8%;
+    right: 35%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.avatar .smile {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    border-bottom: 4px solid currentColor;
+    border-radius: 0 0 15px 15px;
+    top: 25%;
+    left: 30%;
+}
+
+.gold-glow { box-shadow: 0 0 20px #ffcc33; }
+.silver-glow { box-shadow: 0 0 20px #cccccc; }
+.bronze-glow { box-shadow: 0 0 20px #cc6633; }
+
+.info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.place {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.name, .amount {
+    font-size: 1rem;
+    margin: 0.25rem 0;
+}
+
+.pedestal {
+    width: 160px;
+    height: 40px;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.gold-pedestal {
+    background: linear-gradient(45deg, #ffcc33, #ffd700);
+    height: 120px;
+}
+
+.silver-pedestal {
+    background: linear-gradient(45deg, #cccccc, #e0e0e0);
+    height: 80px;
+}
+
+.bronze-pedestal {
+    background: linear-gradient(45deg, #cc6633, #cd7f32);
+    height: 60px;
+}
+
+.jumping {
+    animation: jump 1s infinite ease-in-out;
+}
+
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1a1a3a;
+    color: #33ff33;
+    border: 2px solid #33ff33;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.back-button:hover {
+    background: #33ff33;
+    color: #1a1a3a;
+    box-shadow: 0 0 15px #33ff33;
+}
+
+.back-icon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .winners-title {
+        font-size: 2.5rem;
+    }
+    
+    .podium-scene {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .avatar-container {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .pedestal {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .winners-title {
+        font-size: 2rem;
+    }
+    
+    .winners-subtitle {
+        font-size: 1rem;
+    }
+    
+    .podium-scene {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .avatar-container {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .pedestal {
+        width: 80px;
+    }
+    
+    .trophy {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pay-to-Post</title>
+    <link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#0c0c2b">
+    <title>Retro Pay-to-Post</title>
+</head>
+<body>
+    <div class="crt-effect"></div>
+
+    <div class="tv-frame"></div>
+
+    <div id="top-spender-banner">
+                <p id="top-spender-banner-message">No top spender yet.</p>
+                <div class="expand-indicator">▼ Click to expand ▼</div>
+            </div>
+            <div class="winners-link-container">
+                <a href="winners.html" class="winners-banner-link">🏆 View Big Winners 🏆</a>
+                <a href="snake.html" class="snake-banner-link">🐍 Snake the Leader! 🐍</a>
+                <a href="donations.html" class="donations-banner-link">❤️ Donation Scoreboard ❤️</a>
+            </div>
+
+    <div class="container">
+        <div class="main-content full-width">
+            <div id="message-form">
+                <h2>Post Your Message</h2>
+                <input type="text" id="name" placeholder="Your Name (25 chars max)" maxlength="25">
+                <textarea id="message" placeholder="Your Message (300 chars max)"></textarea>
+                <input type="number" id="amount" placeholder="Amount (USD)">
+                <select id="charity-select" class="charity-dropdown">
+                    <option value="">CHOOSE YOUR CHARITY</option>
+                    <option value="nps">National Park Service</option>
+                    <option value="foa">Friends of Animals</option>
+                    <option value="cri">Cancer Research Institute</option>
+                    <option value="cfh">Coalition for the Homeless</option>
+                    <option value="aclu">American Civil Liberties Union</option>
+                </select>
+                <button id="post-button">Post</button>
+            </div>
+
+            <div id="messages">
+                <h2>Messages:</h2>
+                <ul id="message-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="leaderboard" class="bottom-leaderboard">
+        <h2>Top Spender:</h2>
+        <p id="top-spender-message">No top spender yet.</p>
+
+        <div class="leaderboard-tabs">
+                    <button class="tab-button active" data-tab="daily">Daily</button>
+                    <button class="tab-button" data-tab="weekly">Weekly</button>
+                    <button class="tab-button" data-tab="monthly">Monthly</button>
+                    <button class="tab-button" data-tab="alltime">All-Time</button>
+                </div>
+
+                <div class="tab-content" id="daily-tab">
+                    <h3>Daily Top 5 Spenders:</h3>
+                    <ul id="daily-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="weekly-tab" style="display: none;">
+                    <h3>Weekly Top 5 Spenders:</h3>
+                    <ul id="weekly-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="monthly-tab" style="display: none;">
+                    <h3>Monthly Top 10 Spenders:</h3>
+                    <ul id="monthly-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                    <a href="winners.html" class="winners-link">View Big Winners 🏆</a>
+                </div>
+
+                <div class="tab-content" id="alltime-tab" style="display: none;">
+                    <h3>All-Time Top 10 Spenders:</h3>
+                    <ul id="alltime-top-spenders-list">
+                        <li>No spenders yet.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

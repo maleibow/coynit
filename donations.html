@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Scoreboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .charity-graph {
+            margin: 20px auto;
+            padding: 20px;
+            border: 4px solid #33ff33;
+            display: flex;
+            height: 400px;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .charity-bar-container {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .charity-bar {
+            width: 40px;
+            margin-top: auto;
+            transition: height 1s ease-in-out;
+            position: relative;
+            background: currentColor;
+        }
+        .charity-label {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            margin: 10px 0;
+            text-align: center;
+            font-size: 10px;
+            min-height: 80px;
+        }
+        .charity-amount {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        #nps-bar { color: #33ff33; }
+        #foa-bar { color: #ff3366; }
+        #cri-bar { color: #33ffff; }
+        #cfh-bar { color: #ffcc33; }
+        #aclu-bar { color: #ff33ff; }
+        .back-button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #33ff33;
+            text-decoration: none;
+            border: 2px solid #33ff33;
+        }
+        .back-button:hover {
+            background: #33ff33;
+            color: black;
+        }
+        .totals-section {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #33ff33;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-effect"></div>
+    <div class="tv-frame"></div>
+    
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main</a>
+        <div id="charity-container" class="charity-graph">
+            <div class="charity-bar-container">
+                <div class="charity-bar" id="nps-bar"></div>
+                <div class="charity-label">National Park Service</div>
+                <div class="charity-amount" id="nps-amount">$0.00</div>
+            </div>
+            <div class="charity-bar-container">
+                <div class="charity-bar" id="foa-bar"></div>
+                <div class="charity-label">Friends of Animals</div>
+                <div class="charity-amount" id="foa-amount">$0.00</div>
+            </div>
+            <div class="charity-bar-container">
+                <div class="charity-bar" id="cri-bar"></div>
+                <div class="charity-label">Cancer Research Institute</div>
+                <div class="charity-amount" id="cri-amount">$0.00</div>
+            </div>
+            <div class="charity-bar-container">
+                <div class="charity-bar" id="cfh-bar"></div>
+                <div class="charity-label">Coalition for the Homeless</div>
+                <div class="charity-amount" id="cfh-amount">$0.00</div>
+            </div>
+            <div class="charity-bar-container">
+                <div class="charity-bar" id="aclu-bar"></div>
+                <div class="charity-label">American Civil Liberties Union</div>
+                <div class="charity-amount" id="aclu-amount">$0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateDonationGraph() {
+            const defaultDonations = {nps: 0, foa: 0, cri: 0, cfh: 0, aclu: 0};
+            const donations = {...defaultDonations, ...JSON.parse(localStorage.getItem('donations') || '{}')};
+            const maxAmount = Math.max(...Object.values(donations)) || 1;
+            
+            document.getElementById('nps-bar').style.height = ((donations.nps || 0) / maxAmount * 100) + '%';
+            document.getElementById('foa-bar').style.height = ((donations.foa || 0) / maxAmount * 100) + '%';
+            document.getElementById('cri-bar').style.height = ((donations.cri || 0) / maxAmount * 100) + '%';
+            document.getElementById('cfh-bar').style.height = ((donations.cfh || 0) / maxAmount * 100) + '%';
+            document.getElementById('aclu-bar').style.height = ((donations.aclu || 0) / maxAmount * 100) + '%';
+            
+            document.getElementById('nps-amount').textContent = '$' + (donations.nps || 0).toFixed(2);
+            document.getElementById('foa-amount').textContent = '$' + (donations.foa || 0).toFixed(2);
+            document.getElementById('cri-amount').textContent = '$' + (donations.cri || 0).toFixed(2);
+            document.getElementById('cfh-amount').textContent = '$' + (donations.cfh || 0).toFixed(2);
+            document.getElementById('aclu-amount').textContent = '$' + (donations.aclu || 0).toFixed(2);
+        }
+
+        updateDonationGraph();
+        setInterval(updateDonationGraph, 5000);
+    </script>
+</body>
+</html>

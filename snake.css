@@ -1,0 +1,186 @@
+
+.snake-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.snake-title {
+    color: #33ff33;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #33ff33;
+}
+
+#snake-game {
+    border: 4px solid #33ff33;
+    background-color: #000;
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(51, 255, 51, 0.5);
+    max-width: 100%;
+    width: min(400px, 95vw);
+    height: min(400px, 95vw);
+}
+
+#leader-info {
+    color: #ff33ff;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+#game-stats {
+    color: #33ff33;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.game-button {
+    background: #33ff33;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.game-button:hover {
+    background: #ff33ff;
+    color: #000;
+}
+
+#touch-controls {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.horizontal-controls {
+    display: flex;
+    gap: 30px;
+    margin: 5px 0;
+}
+
+.control-btn {
+    background: #33ff33;
+    color: #000;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:active {
+    background: #ff33ff;
+}
+
+@media (max-width: 768px) {
+    #touch-controls {
+        display: flex;
+    }
+}
+
+.player-setup {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#player-name {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    background: #000;
+    border: 2px solid #33ff33;
+    color: #33ff33;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.snake-leaderboard {
+    margin: 20px auto;
+    padding: 15px;
+    border: 4px solid #33ff33;
+    background-color: #000;
+    max-width: 400px;
+}
+
+.snake-leaderboard h2 {
+    color: #33ff33;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#snake-leaderboard-list {
+    list-style: none;
+    padding: 0;
+}
+
+#snake-leaderboard-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    color: #33ff33;
+    border-bottom: 1px solid #33ff33;
+}
+
+#snake-leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+.back-button {
+    margin-top: 20px;
+    display: inline-block;
+    color: #33ff33;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+.snake-eye {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at center, #ff0000 0%, #330000 70%, transparent 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff0000;
+    animation: glowEye 0.5s ease-in-out infinite alternate;
+    z-index: 1000;
+}
+
+.snaked-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff0000;
+    font-size: 48px;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 0 0 10px #ff0000;
+    animation: flashText 0.2s ease-in-out infinite alternate;
+    z-index: 1001;
+}
+
+@keyframes glowEye {
+    from { transform: translate(-50%, -50%) scale(1); }
+    to { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes flashText {
+    from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+}
